@@ -12,8 +12,33 @@
 # the additional setup, and require it from the spec files that actually need
 # it.
 #
+
+  # include FrutaHelper
+  require_relative '../helpers/helpers'
+
 # See http://rubydoc.info/gems/rspec-core/RSpec/Core/Configuration
 RSpec.configure do |config|
+
+  config.before(:suite) do
+    puts ">>>>>>>>>>>>>> ANTES DE TODA LA SUITE DE TESTS"
+  end
+
+  config.after(:suite) do
+    puts ">>>>>>>>>>>>>> DESPUÉS DE TODA LA SUITE DE TESTS"
+  end
+
+  # :context y :all son lo mismo
+  config.before(:context) do
+    puts ">>>>>>>>>>>>>> ANTES DE TODOS LOS TESTS"
+  end
+
+  config.after(:all) do
+    puts ">>>>>>>>>>>>>> DESPUÉS DE TODOS LOS TESTS"
+  end
+
+  # include FrutaHelper
+  config.include FrutaHelper
+
   # rspec-expectations config goes here. You can use an alternate
   # assertion/expectation library such as wrong or the stdlib/minitest
   # assertions if you prefer.
